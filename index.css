@@ -1,0 +1,237 @@
+@import url("https://fonts.googleapis.com/css2?family=Secular+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&display=swap");
+
+:root {
+  --accent: #f84e6a;
+
+  --gradient: linear-gradient(45deg, #5767ff, #ff0c37);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #14131c;
+    --background-secondary: #202025;
+    --foreground: #ffffff;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: #f0f0f0;
+    --background-secondary: #fffeff;
+    --foreground: #14131c;
+  }
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: var(--foreground);
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  scroll-behavior: smooth;
+  font-weight: 600;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background: var(--background);
+}
+
+body,
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main,
+footer content {
+  max-width: 1440px;
+  width: 100%;
+  padding: 40px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 15vh;
+  position: relative;
+}
+
+::-webkit-scrollbar {
+  background: var(--gradient);
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 10px;
+}
+
+.title {
+  width: 100%;
+  font-family: "Secular One";
+  font-weight: 400;
+  font-size: clamp(40px, 8vw, 100px);
+  margin-top: 30vh;
+  animation: titleLoad 1s ease;
+  text-align: left;
+}
+
+.title .pulse-gradient {
+  color: transparent;
+  font-family: "Secular One";
+  font-size: clamp(40px, 8vw, 100px);
+  background-image: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-weight: 600;
+}
+
+@keyframes titleLoad {
+  from {
+    opacity: 0;
+    transform: translateY(-80px);
+  }
+  to {
+    opacity: 100%;
+  }
+}
+
+@keyframes showArrow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100%;
+  }
+}
+
+.down-arrow {
+  opacity: 0;
+}
+
+.cards {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+card {
+  display: grid;
+  width: 100%;
+  grid-template-columns: auto auto;
+  justify-content: space-evenly;
+  align-items: center;
+  column-gap: 1em;
+  padding: 20vh 0;
+}
+
+card h2 {
+  color: var(--accent);
+  margin-bottom: 1em;
+  font-size: clamp(17px, 8vmin, 40px);
+  font-weight: 800;
+}
+
+card img {
+  width: 100%;
+}
+
+card ul {
+  list-style-position: inside;
+  font-size: clamp(17px, 4vmin, 25px);
+  padding-left: 5vmin;
+}
+
+card li::marker {
+  color: var(--accent);
+}
+
+card li {
+  margin-bottom: 10px;
+}
+
+.button {
+  text-decoration: none;
+  background: var(--accent);
+  font-family: "Secular One";
+  font-weight: 400;
+  color: var(--foreground);
+  border-radius: 10px;
+  padding: 0.5em 1em;
+  width: auto;
+  font-size: clamp(15px, 1vmin 30px);
+  transition: all 0.4s ease;
+  text-align: center;
+}
+
+a.to-app {
+  position: absolute;
+  top: 1em;
+  right: 40px;
+}
+
+.button:hover {
+  transform: scale(1.03) translateY(-3px);
+}
+
+.button:active {
+  transform: scale(0.95) translateY(3px);
+}
+
+footer {
+  background: var(--background-secondary);
+  width: 100%;
+}
+
+footer content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 500px) {
+  footer content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5vh;
+  }
+}
+
+footer content div:nth-child(1) {
+  display: flex;
+  flex-direction: row;
+  column-gap: 1em;
+}
+
+footer content div:nth-child(1) a {
+  text-decoration: none;
+  font-size: clamp(10px, 1em, 30px);
+  color: var(--accent);
+}
+
+@media screen and (max-width: 850px) {
+  card {
+    grid-template-columns: 1fr;
+  }
+
+  card img {
+    display: none;
+  }
+
+  main,
+  footer content {
+    padding: 20px 20px;
+  }
+
+  a.to-app {
+    top: 20px;
+    right: 20px;
+  }
+}
